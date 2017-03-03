@@ -1,0 +1,32 @@
+.navbar-brand {
+  padding: 0;
+}
+
+.introduction-background {
+  height: 400px;
+  background-image: url("../images/img_1.jpg");
+	background-repeat:  no-repeat;
+	background-size: cover;
+  background-position: center;
+  min-width: 100%;
+  margin-top: 50px;
+}
+
+.commentSubmit {
+  padding-top: 10px;
+}
+
+.footer {
+  background-color: #edeaea;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.footer a {
+  color: #5a8528;
+  margin: 2px;
+}
+
+.footer a:hover {
+  color: #375612;
+}

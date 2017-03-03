@@ -1,0 +1,109 @@
+<div class="introduction container">
+  <h1>
+    This is the product page
+  </h1>
+</div>
+
+<div class="container" ng-controller="ProductController">
+  <div class="row">
+    <div class="product">
+      <div class="col-md-8">
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th>
+                  Status
+                </th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr ng-repeat="item in shopItem track by $index">
+                <td>{{item.item}}</td>
+                <td>{{item.prices | currency: "€" }}</td>
+                <td>
+                  <span ng-show="item.isInYourCart"><i class="fa fa-check" ng-show="!isMarked"></i></span>
+                  <span ng-show="!item.isInYourCart"></span>
+                </td>
+                <td>
+                  <button class="btn btn-success" ng-click="addToCart(item)" >Add to cart</button>
+                  <!-- <button class="btn btn-success" id="show" ng-click="$parent.selectedItems=$index">Show Comment</button>
+                  <div class="commentMenu" ng-show="$parent.selectedItems == $index">
+                    <h3>Comment</h3>
+                    <form name="commentForm">
+                    <input type="text" name="commentForm"/>
+                    </form>
+
+                    <button id="button">Add New Comment</button><br/>
+                    <br/>
+                    <div class="commentList"></div>
+                  </div> -->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div>
+          <button class="btn btn-success" id="hide">Hide Comment</button>
+          <button class="btn btn-success" id="show">Show Comment</button>
+          <div class="commentMenu">
+            <form id="commentBox" name="commentForm"></form>
+            <textarea rows="4" cols="60" name="commentForm" form="commentBox"></textarea>
+
+            <div class="commentSubmit">
+              <button id="button">Add New Comment</button><br/>
+            </div>
+            <br/>
+            <div>
+              <h3>Comments</h3>
+              <p class="commentList"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <table  class="table table-striped">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Quantity</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr ng-repeat="item in selectedItems track by $index">
+              <td>{{item.item}}</td>
+              <td>{{item.quantity}}
+                <button class="pull-right" ng-click="decreaseItemAmount(item)">
+                  -
+                </button>
+                <button class="pull-right" ng-click="increaseItemAmount(item)">
+                  +
+                </button>
+              </td>
+              <td>{{item.prices * item.quantity | currency: "€" }}</td>
+              <td>
+                [<a href ng-click="removeItem($index)">X</a>]
+            </td>
+            </tr>
+
+            <tr>
+              <td><strong>Total</strong></td>
+              <td><strong>{{checkoutTotal | currency: "€"}}</strong></td>
+            </tr>
+
+            <tr>
+              <td><a href="#/checkout" class="btn btn-primary">Check Out</a></td>
+            </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

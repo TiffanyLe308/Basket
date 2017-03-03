@@ -1,0 +1,41 @@
+<div class="container" ng-controller="ProductController">
+  <h2>Checkout page</h2>
+
+  <div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="item in selectedItems track by $index" >
+          <td>{{item.item}}</td>
+          <td>{{item.prices * item.quantity | currency: "€" }}</td>
+          <td>{{item.quantity}}
+            <button class="pull-right" ng-click="decreaseItemAmount(item)">
+              -
+            </button>
+            <button class="pull-right" ng-click="increaseItemAmount(item)">
+              +
+            </button>
+          </td>
+          <td><a href="#/checkout" class="btn btn-danger" ng-click="removeItem($index)">Remove</a></td>
+        </tr>
+
+        <tr>
+          <td><strong>Total</strong></td>
+          <td><strong>{{checkoutTotal | currency: "€"}}</strong></td>
+          <td>
+            <a href="#/cart" class="btn btn-primary">Customize</a>
+          </td>
+          <td>
+            <a href="#/checkout" class="btn btn-danger" ng-click="removeAllItem()">Delete All</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
